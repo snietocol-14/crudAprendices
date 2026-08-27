@@ -6,6 +6,21 @@ const port = process.env.PUERTO || 3111;
 //body-parser
 app.use(express.json())
 
+//uso de librería multer
+const multer = require("multer")
+//configurar almacenamiento
+const almacenamiento = multer.diskStorage({
+    destination :(req, file, cb) => {
+        cb(null, "misimagenes/")
+    },
+    filename: (req, file, cb) => {
+        //extraer la extensión y después g
+        cb(null, '${Date.now()}')
+    }
+})
+
+const cargar = multer({storage: almacenamiento})
+
 //libreria para leer archivo
 const sistemaArchivo = require('fs');
 const ruta = require('path');
@@ -28,14 +43,14 @@ app.get('/api/aprendices', (req, res) => {
     });
 });
 
-
-
 //endpoint crear un aprendiz
-app.post("/api/aprendices", (req, res)=>{
+app.post("/api/aprendices", cargar.single("imagen"), (req, res) => {
     const datoAprendiz = req.body
+    //modificar datoAprendiz con la ruta de la foto
+    datoAprendiz.avatar = req.filename ? '/misimagenes/${req.file.filename}' : "sin imagen"
     sistemaArchivo.readFile(rutaArchivoJson, "utf-8", (error, datos)=>{
         if (error) {
-            res.status(500).json({ Error: "Error al leer el archivo, conxion bd" })
+            res.status(500).json({ Error: "Error al leer el archivo, conexion bd" })
         }
         const listaAprendices = JSON.parse(datos);
         //adicionar a la lista el nuevo aprendiz
