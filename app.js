@@ -1,6 +1,7 @@
 const express = require('express');
+require('dotenv').config();
 const app = express();
-require('dotenv/config');
+
 const port = process.env.PUERTO || 3111;
 //body-parser
 app.use(express.json())
@@ -9,7 +10,7 @@ app.use(express.json())
 const sistemaArchivo = require('fs');
 const ruta = require('path');
 //generar una ruta para el archivo aprendices.json
-const rutaArchivoJson = ruta.join(__dirname, 'listaDatos.json');
+const rutaArchivoJson = ruta.join(__dirname, 'datos.json');
 //ruta raiz
 app.get('/', (req, res) => {
     res.send('API RESTFUL - CRUD Aprendices');
@@ -77,13 +78,12 @@ app.put("/api/aprendices/:dni", (req, res)=>{
 
 app.post("/datosJson", (req, res)=>{
     const datosRecibidos = req.body
-    //validar si datos son recibidos
-    if (datosRecibidos){
-        res.status(200).json({mensaje: "datos recibidos correctamente"})
+    //validar que los datos son recibidos
+    if(datosRecibidos){
+        res.status(200).json({"mensaje":"Datos recibidos correctamente"})
     }
-    res.status(500).json({Mensaje: "No se recibieron datos"})
+    res.status(500).json({"mensaje":"No se recibieron datos"})
 })
-
 
 // Modo de escucha del servidor
 app.listen(port, () => {

@@ -14,5 +14,13 @@
     "edad": 25,
     "correo": "luis@example.com",
     "avatar": "imagenes/luis.jpg"
+  },
+  {
+    "dni": 4,
+    "nombre": "Maria",
+    "apellido": "Pinzón",
+    "edad": 20,
+    "correo": "mari@example.com",
+    "avatar": "imagenes/maria.jpg"
   }
 ]
