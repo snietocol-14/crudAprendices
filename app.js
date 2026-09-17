@@ -1,7 +1,7 @@
 const express = require('express');
-const registroMiddleware = require("./middleware/registroMiddleware");
-const manejadorErrores = require("./middleware/manejadorErrores");
-const autenticarToken = require("./middleware/autenticar");
+const registroMiddleware = require("./src/middleware/registroMiddleware");
+const manejadorErrores = require("./src/middleware/manejadorErrores");
+const autenticarToken = require("./src/middleware/autenticar");
 const jswtoken = require("jsonwebtoken")
 const app = express();
 require('dotenv').config();
