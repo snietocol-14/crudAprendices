@@ -2,13 +2,8 @@ const jswtoken = require("jsonwebtoken")
 
 //importar servicio
 const ingresar = require("../services/autenticarService");
-const iniciarSesion = async (req, res)=>{
-    const {usuario, clave} = req.body
-        const token = ingresar(usuario, clave)
-        res.json({token: token})
-    // try{
-    // }catch(error){
-    // }
+const listarUsuario = async (req, res)=>{
+    res.json({mensaje: "listado de usuarios"})
 }
 
-module.exports = iniciarSesion;
+module.exports = listarUsuario;

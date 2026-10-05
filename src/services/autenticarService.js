@@ -1,6 +1,10 @@
 const jswtoken = require("jsonwebtoken");
 const ingresar = (usuario, clave) => {
     //validar usuario
+    const usuariobd = {
+        "usuario" : "sofia",
+        "clave" : 12345
+    }
     if (usuario !== usuariobd.usuario || clave !== usuariobd.clave) {
         res.json({ mensaje: "Usuario y/o clave incorrectos." })
     }

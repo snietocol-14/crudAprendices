@@ -3,7 +3,7 @@ const { Router } = require('express');
 //importar enrutadores
 const pruebaRouter = require('./pruebaRouter.js');
 const autenticarRouter = require('./autenticarRouter.js');
-
+const usuariosRouter = require('./usuariosRouter.js');
 const enrutador = Router();
 
 //usar enrutador
