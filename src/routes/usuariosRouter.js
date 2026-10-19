@@ -1,8 +1,8 @@
 const { Router } = require('express');
 const enrutador = Router();
+const {listarUsuarios, crearUsuario} = require("../controllers/usuariosController")
 
-enrutador.get("/usuarios", (req, res)=>{
-    res.json({mensaje: "Ruta de prueba de 3407184"})
-})
+enrutador.get("/usuarios", listarUsuarios);
+enrutador.post("/usuarios", crearUsuario);
 
 module.exports = enrutador;

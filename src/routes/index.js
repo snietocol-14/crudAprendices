@@ -9,5 +9,6 @@ const enrutador = Router();
 //usar enrutador
 enrutador.use("/rutaPrueba", pruebaRouter);
 enrutador.use("/autenticar", autenticarRouter);
+enrutador.use("/usuarios", usuariosRouter);
 
 module.exports = enrutador;
